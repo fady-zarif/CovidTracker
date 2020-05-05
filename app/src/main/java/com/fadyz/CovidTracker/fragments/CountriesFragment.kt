@@ -20,6 +20,8 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 /**
  * A simple [Fragment] subclass.
  */
+const val FIRST_ELEMENT_POSITION = 0
+
 class CountriesFragment : BaseFragment() {
     private val countriesRecyclerAdapter: CountriesRecyclerAdapter by inject()
     private val mainActivityViewModel: MainActivityViewModel by sharedViewModel()
@@ -41,11 +43,8 @@ class CountriesFragment : BaseFragment() {
         observeBaseViewModel(mainActivityViewModel)
 
         mainActivityViewModel.getCountriesLiveData().observe(viewLifecycleOwner, Observer {
-            for (row in it) {
-                Log.e("HelloFishar ", " ${row.country}")
-            }
             countriesRecyclerAdapter.updateCurrentList(it)
-            rvCountries.smoothScrollToPosition(0)
+            rvCountries.smoothScrollToPosition(FIRST_ELEMENT_POSITION)
         })
     }
 
@@ -57,25 +56,4 @@ class CountriesFragment : BaseFragment() {
             bottomSheetView.show(childFragmentManager, this::class.java.simpleName)
         }
     }
-
-    /*
-*
-        view.rvCountries.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            @SuppressLint("CheckResult")
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val totalItemCount: Int = gridLayoutInflater.itemCount
-                val lastVisible: Int = gridLayoutInflater.findLastVisibleItemPosition()
-
-                val endHasBeenReached = lastVisible + 1 >= totalItemCount
-                if (endHasBeenReached) {
-                    showProgressDialog()
-                    Observable.create(ObservableOnSubscribe<String> {
-                        it.onNext("")
-                    }).debounce(2, TimeUnit.SECONDS)
-                            .subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread()).subscribe { mainActivityViewModel.addPageNum() }
-                }
-
-            }
-        })*/
 }

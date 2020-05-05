@@ -12,6 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         decorview()
+        // todo attach to Main Activity
     }
 
     private fun decorview() {

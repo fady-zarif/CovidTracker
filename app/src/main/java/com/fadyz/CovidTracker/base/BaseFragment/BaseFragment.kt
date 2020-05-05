@@ -48,7 +48,6 @@ abstract class BaseFragment : Fragment() {
     }
 
     private fun dismissProgressDialog() {
-
         (activity as BaseActivity).dismissProgressDialog()
     }
 

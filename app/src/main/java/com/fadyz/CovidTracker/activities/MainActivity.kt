@@ -17,7 +17,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 const val ANALYTICS_FRAGMENT = 0
 const val COUNTRIES_FRAGMENT = 1
-const val FRAGMENT_TOTAL = 2
 
 class MainActivity : BaseActivity() {
 
@@ -26,11 +25,8 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initViewPager()
 
-        myViewPager.adapter = MyPagerAdapter(this)
-        myViewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
-        myViewPager.currentItem = ANALYTICS_FRAGMENT
-        myViewPager.isUserInputEnabled = false
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.ic_virus)
 
@@ -49,6 +45,13 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun initViewPager()
+    {
+        myViewPager.adapter = MyPagerAdapter(this)
+        myViewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+        myViewPager.currentItem = ANALYTICS_FRAGMENT
+        myViewPager.isUserInputEnabled = false
+    }
     private fun FragmentManager.inTransaction(action: FragmentTransaction.() -> Unit) {
         val fragmentTransaction = this.beginTransaction()
         fragmentTransaction.action()

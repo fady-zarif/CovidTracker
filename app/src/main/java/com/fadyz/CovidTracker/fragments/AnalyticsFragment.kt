@@ -32,9 +32,7 @@ class AnalyticsFragment : BaseFragment() {
         mainActivityViewModel.getGeneralStatus()
         observeBaseViewModel(mainActivityViewModel)
 
-//        progress_bar.visibility = View.VISIBLE
         mainActivityViewModel.getStatiscsLiveData().observe(viewLifecycleOwner, Observer {
-//            progress_bar.visibility = View.GONE
             tvTotalConfirmed.text = it.totalCases
             tvTotalRecovered.text= it.recoveryCases
             tvTotalDeath.text=it.deathCases

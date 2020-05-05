@@ -22,9 +22,6 @@ class CountryItemView(context: Context) : LinearLayout(context) {
      fun setCountryView(country: CountryModel) {
 
         loadImage(country.flag,imgFlag).into(imgFlag)
-//        Picasso.get().load(country.flag)
-//                .fit().into(imgFlag)
-
     }
 
 }

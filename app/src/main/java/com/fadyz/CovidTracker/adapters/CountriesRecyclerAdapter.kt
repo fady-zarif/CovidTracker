@@ -6,6 +6,8 @@ import com.fadyz.CovidTracker.views.CountryItemView
 import com.fadyz.CovidTracker.Models.CountryModel
 import org.koin.dsl.module
 
+const val FIRST_LIST_ELEMENT = "World"
+
 class CountriesRecyclerAdapter : RecyclerView.Adapter<CountriesRecyclerAdapter.CountriesViewHolder>() {
     private val countryList = ArrayList<CountryModel>()
     var onItemClick: ((CountryModel) -> Unit)? = null
@@ -27,9 +29,9 @@ class CountriesRecyclerAdapter : RecyclerView.Adapter<CountriesRecyclerAdapter.C
 
 
     fun updateCurrentList(list: ArrayList<CountryModel>) {
-        if (list[0].country == "World")
+        if (list[0].country == FIRST_LIST_ELEMENT)
             countryList.clear()
-        countryList.addAll(list.filter { it.country != "World" })
+        countryList.addAll(list.filter { it.country != FIRST_LIST_ELEMENT })
         this.notifyDataSetChanged()
     }
 

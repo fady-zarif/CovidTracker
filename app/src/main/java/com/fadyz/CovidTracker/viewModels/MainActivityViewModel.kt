@@ -8,6 +8,9 @@ import com.fadyz.CovidTracker.Models.CountryModel
 import com.fadyz.CovidTracker.Models.StatisticsData
 import com.fadyz.CovidTracker.base.BaseViewModel.BaseViewModel
 
+
+const val MAP_LIMIT_KEY = "limit"
+
 class MainActivityViewModel(application: Application, private val covidRepo: CovidRepository) : BaseViewModel(application) {
     private var pageNum: Int = 1
     private var dataMutableLiveData = MutableLiveData<ArrayList<CountryModel>>()
@@ -36,7 +39,8 @@ class MainActivityViewModel(application: Application, private val covidRepo: Cov
 
     fun getCountriesLiveData(): LiveData<ArrayList<CountryModel>> = dataMutableLiveData
     fun getStatiscsLiveData(): LiveData<StatisticsData> = statiscsLiveData
-    private fun getQueryMap(): MutableMap<String, String> = mutableMapOf("limit" to "40", "page" to getPageNum())
+    // todo change this static
+    private fun getQueryMap(): MutableMap<String, String> = mutableMapOf(MAP_LIMIT_KEY to "40", "page" to getPageNum())
     fun addPageNum() {
         pageNum++
         getServerData()
