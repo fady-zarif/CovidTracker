@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home_bottom_navigation_analytics"
+        android:icon="@drawable/ic_home_bottom_navigation_analytics"
+        android:title="@string/title_home_bottom_navigation_menu_analytics" />
+    <item
+        android:id="@+id/home_bottom_navigation_empty"
+        android:enabled="false"
+        android:title="@string/title_home_bottom_navigation_menu_refresh" />
+    <item
+        android:id="@+id/home_bottom_navigation_countries"
+        android:icon="@drawable/ic_home_bottom_navigation_countries"
+        android:title="@string/title_home_bottom_navigation_menu_countries" />
+
+
+
+
+
+</menu>
