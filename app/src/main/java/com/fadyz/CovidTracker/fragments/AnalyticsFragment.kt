@@ -15,13 +15,14 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class AnalyticsFragment : BaseFragment() {
-    val mainActivityViewModel: MainActivityViewModel by sharedViewModel()
+class AnalyticsFragment() : BaseFragment() {
+    private val mainActivityViewModel: MainActivityViewModel by sharedViewModel()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return super.onCreateView(inflater, container, savedInstanceState)
     }
+
 
     override fun getChildFragment(): Int {
         return R.layout.fragment_analytics

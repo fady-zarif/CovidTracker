@@ -14,7 +14,7 @@ const val MAP_LIMIT_KEY = "limit"
 class MainActivityViewModel(application: Application, private val covidRepo: CovidRepository) : BaseViewModel(application) {
     private var pageNum: Int = 1
     private var dataMutableLiveData = MutableLiveData<ArrayList<CountryModel>>()
-    private val statiscsLiveData = MutableLiveData<StatisticsData>()
+    private val statisticsLiveData = MutableLiveData<StatisticsData>()
     fun getServerData() {
         showLoadingViewLiveData.value = true
         covidRepo.getRemoteDataFromServer(getQueryMap(), {
@@ -29,7 +29,7 @@ class MainActivityViewModel(application: Application, private val covidRepo: Cov
     fun getGeneralStatus() {
         showLoadingViewLiveData.value = true
         covidRepo.getRemoteGeneralStatus({
-            statiscsLiveData.value = it.data
+            statisticsLiveData.value = it.data
             showLoadingViewLiveData.value = false
         }, {
             showErrorLiveData.value = it
@@ -38,9 +38,9 @@ class MainActivityViewModel(application: Application, private val covidRepo: Cov
     }
 
     fun getCountriesLiveData(): LiveData<ArrayList<CountryModel>> = dataMutableLiveData
-    fun getStatiscsLiveData(): LiveData<StatisticsData> = statiscsLiveData
-    // todo change this static
-    private fun getQueryMap(): MutableMap<String, String> = mutableMapOf(MAP_LIMIT_KEY to "40", "page" to getPageNum())
+    fun getStatiscsLiveData(): LiveData<StatisticsData> = statisticsLiveData
+    // todo change to dynamic
+    private fun getQueryMap(): MutableMap<String, String> = mutableMapOf(MAP_LIMIT_KEY to "60", "page" to getPageNum())
     fun addPageNum() {
         pageNum++
         getServerData()

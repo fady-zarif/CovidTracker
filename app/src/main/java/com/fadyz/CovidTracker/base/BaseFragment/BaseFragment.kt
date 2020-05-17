@@ -43,11 +43,11 @@ abstract class BaseFragment : Fragment() {
     }
 
     // any Activity will inheret from baseActivity
-    private fun showProgressDialog() {
+    protected fun showProgressDialog() {
         (activity as BaseActivity).showProgressDialog()
     }
 
-    private fun dismissProgressDialog() {
+    protected fun dismissProgressDialog() {
         (activity as BaseActivity).dismissProgressDialog()
     }
 
